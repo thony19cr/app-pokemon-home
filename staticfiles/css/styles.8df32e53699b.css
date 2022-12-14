@@ -1,0 +1,18 @@
+.title {
+    size: 10px;
+    background-color: burlywood;
+    /*https://htmlcolorcodes.com/es/*/
+}
+
+.subtitle {
+
+}
+
+.item {
+    size: 50px;
+    font-family: "Comic Sans MS";
+}
+
+.null {
+    color: #F9473F;
+}
