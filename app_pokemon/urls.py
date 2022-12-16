@@ -19,11 +19,20 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+# Se agrega las url que necesitamos para generar nuestros JWT en Django
+from rest_framework_simplejwt import views as jwt_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('owner/', include('owner.urls')),
-    path('pokemon/', include('pokemon.urls')),
-    path('catalog/', include('catalog.urls'))
+    path('owner/', include('apps.owner.urls')),
+    path('pokemon/', include('apps.pokemon.urls')),
+    path('catalog/', include('apps.catalog.urls')),
+
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+
+    path('api/', include('apps.owner.urls')),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
